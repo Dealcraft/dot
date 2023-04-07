@@ -3,4 +3,4 @@ project(dot_lang)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(dot_lang main.cpp)
+add_executable(dot_lang main.cpp lexer/Lexer.cpp lexer/Lexer.h lexer/LexerTokenType.h)
