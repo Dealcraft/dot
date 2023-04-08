@@ -1,0 +1,12 @@
+if
+[
+true
+42
+"Test Text"
+variable
++
+/* Multi
+Line
+Comment
+*/
+// Single Line Comment
