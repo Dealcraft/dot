@@ -8,7 +8,10 @@
 #include <string>
 #include <list>
 #include <regex>
+#include <algorithm>
+
 #include "LexerTokenType.h"
+#include "../Exceptions/TokenException.h"
 
 using namespace std;
 
@@ -25,6 +28,7 @@ private:
     list<Token> tokens;
 
     int nextToken(int position);
+    static int lineNumber(const string& str, int position);
 
 public:
     Lexer(string sourceCode);

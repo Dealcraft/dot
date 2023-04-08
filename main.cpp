@@ -2,7 +2,8 @@
 #include <fstream>
 #include <sstream>
 
-#include "lexer/Lexer.h"
+#include "Exceptions/DotException.h"
+#include "Lexer/Lexer.h"
 #include "CliParser/CliParser.h"
 #include "CliParser/CliStaticCommands.h"
 
@@ -44,8 +45,15 @@ int main(int argc, char* argv[]) {
     buffer << inputFile.rdbuf();
     inputFile.close();
 
-    Lexer testLexer(buffer.str());
-    list<Token> tokenList = testLexer.parse();
+    list<Token> tokenList;
+    try {
+        Lexer testLexer(buffer.str());
+        tokenList = testLexer.parse();
+    } catch (DotException& e) {
+
+        cout << "There was a problem lexing the source code: " << e.what() << endl;
+        return 1;
+    }
 
     string outFilepath = parser.getArgument("-o").empty() ? "a.tokens" : parser.getArgument("-o");
     ofstream outputFile(outFilepath);

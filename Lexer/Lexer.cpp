@@ -14,7 +14,6 @@ Token::Token(TokenType type, std::string value) {
 
 Lexer::Lexer(string sourceCode) {
     this->source = sourceCode;
-    std::cout << this->source << std::endl;
 }
 
 int Lexer::nextToken(int position) {
@@ -34,6 +33,13 @@ int Lexer::nextToken(int position) {
             return matches[0].length();
         }
     }
+
+    string message = "Invalid token at line " + std::to_string(lineNumber(source, position));
+    throw TokenException(std::strcpy(new char[message.length() + 1], message.c_str()));
+}
+
+int Lexer::lineNumber(const string& str, int position) {
+    return std::count(str.begin(), str.begin() + position, '\n') + 1;
 }
 
 list<Token> Lexer::parse() {
