@@ -31,7 +31,7 @@ const map<TokenType, string> LexerTokenType = {
         {TokenType::Text, R"(("|')([^("|')]*)("|'))"},
         {TokenType::Variable, "([a-zA-Z_]+[a-zA-Z0-9_]*)"},
         {TokenType::Operator, R"((\+|\-|\>|\<|\={1,2}|\!|\.))"},
-        {TokenType::Comment, R"((\/\/.+(?=$|\n)|\/\*[^\*\/]*\*\/))"}
+        {TokenType::Comment, R"(((?<!["'])\/\/.+(?=$|\n)(?!["'])|(?<!["'])\/\*[^\*\/]*\*\/(?!["'])))"}
 };
 
 #endif //DOT_LANG_LEXERTOKENTYPE_H
