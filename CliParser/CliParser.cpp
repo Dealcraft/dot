@@ -5,17 +5,28 @@
 #include "CliParser.h"
 
 CliParser::CliParser(int argc, char **argv) {
-    for (int i = 1; i < argc; ++i) {
+    for (int i = 1; i < argc; i++) {
         string arg = argv[i];
 
         if(arg[0] != '-') {
-            error(i, &arg);
-            return;
+            if(this->file) {
+                error(i, &arg);
+                return;
+            }
+
+            this->file = true;
+            args.insert(make_pair("-i", arg));
+            continue;
         }
 
         if(i + 1 < argc) {
             i++;
             string nextArg = argv[i];
+            if (nextArg[0] == '-') {
+                args.insert(make_pair(arg, ""));
+                i--;
+                continue;
+            }
             args.insert(make_pair(arg, nextArg));
         } else {
             args.insert(make_pair(arg, ""));

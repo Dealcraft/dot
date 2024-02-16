@@ -10,13 +10,12 @@ using namespace std;
 class CliStaticCommands {
 public:
     static void help() {
-        cout << "Usage: dot [options] [arguments]" << endl;
+        cout << "Usage: dot [options] [arguments] <filepath>" << endl;
         cout << "Options:" << endl;
         cout << "\t-h, --help\t Displays this help message" << endl;
-        cout << "\t-v, --version\t Displays the version of the compiler" << endl;
+        cout << "\t-v, --version\t Displays the version of the interpreter" << endl;
         cout << endl;
         cout << "Arguments:" << endl;
-        cout << "\t-i [filepath]\t Defines the input file" << endl;
         cout << "\t-o [filepath]\t Defines the output file" << endl;
     }
     static void version() {

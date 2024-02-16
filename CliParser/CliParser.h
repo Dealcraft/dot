@@ -14,6 +14,7 @@ using namespace std;
 class CliParser {
 private:
     bool error_ = false;
+    bool file = false;
     void error(int i, string* arg);
     map<string, string> args;
 

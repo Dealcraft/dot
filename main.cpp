@@ -13,6 +13,7 @@ int main(int argc, char* argv[]) {
     CliParser parser(argc, argv);
 
     if(parser.hasError()) {
+        CliStaticCommands::help();
         return 1;
     }
 
@@ -32,7 +33,8 @@ int main(int argc, char* argv[]) {
     }
 
     if (!parser.hasFlag("-i")) {
-        cout << "Required argument \"-i\" not found. Please provide a filepath" << endl;
+        cout << "No input file provided." << endl;
+        CliStaticCommands::help();
         return 1;
     }
 
@@ -65,8 +67,9 @@ int main(int argc, char* argv[]) {
 
     for(Token token : tokenList) {
         outputFile << endl;
-        outputFile << "Token type: " << token.type << endl;
-        outputFile << "Token value: " << token.value << endl;
+        outputFile << "--- Type " << token.type << " token ---" << endl;
+        outputFile << token.value << endl;
+        outputFile << "--- Type " << token.type << " token end ---" << endl;
     }
 
     inputFile.close();
