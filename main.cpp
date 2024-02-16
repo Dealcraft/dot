@@ -65,14 +65,15 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    for(Token token : tokenList) {
+    for(const Token& token : tokenList) {
         outputFile << endl;
         outputFile << "--- Type " << token.type << " token ---" << endl;
         outputFile << token.value << endl;
         outputFile << "--- Type " << token.type << " token end ---" << endl;
     }
 
-    inputFile.close();
+
+
     outputFile.close();
     return 0;
 }
