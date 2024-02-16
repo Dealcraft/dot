@@ -25,7 +25,10 @@ int Lexer::nextToken(int position) {
 
         if(std::regex_search(nextToken, matches, pattern)) {
             if (type != TokenType::Whitespace) {
-                string value = matches.size() > 2 ? matches[2] : matches[1];
+                string value = matches[1];
+                if(matches.size() > 5) {
+                    value = matches[5] != "" ? matches[5] : matches[2];
+                }
                 Token token = Token(type, value);
                 this->tokens.push_back(token);
             }

@@ -28,7 +28,7 @@ const map<TokenType, string> LexerTokenType = {
         {TokenType::GroupDivider, "(\\[|\\])"},
         {TokenType::Logical, "(true|false)"},
         {TokenType::Numeric, "([0-9]+)"},
-        {TokenType::Text, R"(("|')([^("|')]*)("|'))"},
+        {TokenType::Text, R"((")([^"]*)(")|(')([^']*)('))"},
         {TokenType::Variable, "([a-zA-Z_]+[a-zA-Z0-9_]*)"},
         {TokenType::Operator, R"((\+|\-|\>|\<|\={1,2}|\!|\.))"},
         {TokenType::Comment, R"((\/\/.+(?=$|\n)|\/\*[^\*\/]*\*\/))"}
